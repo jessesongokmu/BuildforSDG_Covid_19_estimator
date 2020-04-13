@@ -9,7 +9,7 @@ const InfectionsByReportedTime = (data, CurrentlyInfected) => {
   if (data.periodType.toLowerCase() === 'months') {
     timePeriod = Math.trunc((data.timeToElapse * 30));
   }
-  return CurrentlyInfected * (2 ** (Math.trunc((timePeriod / 3))));
+  return Math.trunc(CurrentlyInfected * (2 ** (Math.trunc((timePeriod / 3)))));
 };
 
 
