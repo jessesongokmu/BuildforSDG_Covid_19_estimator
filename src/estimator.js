@@ -1,5 +1,5 @@
-const InfectionsByRequestedTime = (data, CurrentlyInfected, time) => {
-  Math.trunc(CurrentlyInfected * (2 ** (Math.trunc(time / 3))));
+const InfectionsByRequestedTime = (data, CurrentlyInfected, timePeriod) => {
+  Math.trunc(CurrentlyInfected * (2 ** (Math.trunc(timePeriod / 3))));
 };
 const severeCaseByRequestedTime = (data, CurrentlyInfected, time) => {
   const severeCases = Math.trunc(CurrentlyInfected * (2 ** (Math.trunc(time / 3))));
