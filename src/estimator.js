@@ -1,4 +1,4 @@
-const InfectionsByRequestedTime = (data, CurrentlyInfected) => {
+const InfectionsByReqTime = (data, CurrentlyInfected) => {
   let time = '';
   if (data.periodType.toLowerCase() === 'days') {
     time = Math.trunc((data.timeToElapse * 1));
@@ -20,25 +20,24 @@ const InfectionsByRequestedTime = (data, CurrentlyInfected) => {
 const covid19ImpactEstimator = (data) => {
   const input = data;
   // Challenge One Computation.
-  const ImpactCurrentlyInfected = data.reportedCases * 10;
-  const SevereCurrentlyInfected = data.reportedCases * 50;
-
+  const ImpactCurrInfected = data.reportedCases * 10;
+  const SevereCurrInfected = data.reportedCases * 50;
 
   return {
     data: input,
     impact: {
       // challenge One
-      currentlyInfected: ImpactCurrentlyInfected,
-      infectionsByRequestedTime: InfectionsByRequestedTime(input, ImpactCurrentlyInfected)
+      currentlyInfected: ImpactCurrInfected,
+      infectionsByRequestedTime: InfectionsByReqTime(input, ImpactCurrInfected),
       // challenge Two
-      // severeCasesByRequestedTime: severeCaseByRequestedTime
+      severeCasesByRequestedTime: InfectionsByReqTime(input, ImpactCurrInfected) * 0.15
     },
     severeImpact: {
       // challenge One
-      currentlyInfected: SevereCurrentlyInfected,
-      infectionsByRequestedTime: InfectionsByRequestedTime(input, SevereCurrentlyInfected)
+      currentlyInfected: SevereCurrInfected,
+      infectionsByRequestedTime: InfectionsByReqTime(input, SevereCurrInfected),
       // challenge Two
-      // severeCasesByRequestedTime: severeCaseByRequestedTime(input, SevereCurrentlyInfected)
+      severeCasesByRequestedTime: InfectionsByReqTime(input, SevereCurrInfected) * 0.15
     }
   };
 };
