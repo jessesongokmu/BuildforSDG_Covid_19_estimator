@@ -2,9 +2,16 @@ const InfectionsByReqTime = (data, CurrentlyInfected, time) => Math.trunc(
   CurrentlyInfected * (2 ** (Math.trunc(time / 3)))
 );
 
-const SeverCaseByReqTime = (data, CurrentlyInfected, time) => Math.trunc(
-  CurrentlyInfected * (2 ** (Math.trunc(time / 3))) * 0.15
-);
+const SeverCaseByReqTime = Math.trunc(InfectionsByReqTime * 0.15);
+
+
+const HospitalBedsRequest = (data) => {
+  const totalBedCapacity = data.totalHospitalBeds; // Get the Total Beds Available
+  const AvailableCapacity = totalBedCapacity * 0.35; // Get 35% of total beds Available
+  // return unoccupied beds capacity for COVID-19 patients (plus or Minus)
+  return (AvailableCapacity - SeverCaseByReqTime);
+};
+
 
 const covid19ImpactEstimator = (data) => {
   const input = data;
@@ -30,14 +37,17 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: ImpactCurrInfected,
       infectionsByRequestedTime: InfectionsByReqTime(input, ImpactCurrInfected, time),
       // challenge Two
-      severeCasesByRequestedTime: SeverCaseByReqTime(input, ImpactCurrInfected, time)
+      severeCasesByRequestedTime: SeverCaseByReqTime,
+      hospitalBedsByRequestedTime: HospitalBedsRequest(input)
     },
     severeImpact: {
       // challenge One
       currentlyInfected: SevereCurrInfected,
       infectionsByRequestedTime: InfectionsByReqTime(input, SevereCurrInfected, time),
       // challenge Two
-      severeCasesByRequestedTime: SeverCaseByReqTime(input, SevereCurrInfected, time)
+      severeCasesByRequestedTime: SeverCaseByReqTime,
+      hospitalBedsByRequestedTime: HospitalBedsRequest(input)
+
     }
   };
 };
