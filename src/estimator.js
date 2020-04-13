@@ -24,12 +24,16 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       // challenge One
       currentlyInfected: ImpactCurrentlyInfected,
-      infectionsByRequestedTime: InfectionsByRequestedTime(input, ImpactCurrentlyInfected)
+      infectionsByRequestedTime: InfectionsByRequestedTime(input, ImpactCurrentlyInfected),
+      // challenge Two
+      severeCasesByRequestedTime: InfectionsByRequestedTime(input, ImpactCurrentlyInfected) * 0.15
     },
     severeImpact: {
       // challenge One
       currentlyInfected: SevereImpactCurrentlyInfected,
-      infectionsByRequestedTime: InfectionsByRequestedTime(input, SevereImpactCurrentlyInfected)
+      infectionsByRequestedTime: InfectionsByRequestedTime(input, SevereImpactCurrentlyInfected),
+      // challenge Two
+      severeCasesByRequestedTime: InfectionsByRequestedTime(input, SevereImpactCurrentlyInfected) * 0.15
     }
   };
 };
