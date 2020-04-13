@@ -13,7 +13,7 @@ const HospitalBedsRequest = (data, CurrentlyInfected, time) => {
   const totalBedCapacity = data.totalHospitalBeds; // Get the Total Beds Available
   const AvailableCapacity = Math.trunc(totalBedCapacity * 0.35); // Get 35% of total beds Available
   // return unoccupied bed capacity for COVID-19 patients (plus or Minus)
-  return (AvailableCapacity - severeCases);
+  return AvailableCapacity - severeCases;
 };
 
 
