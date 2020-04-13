@@ -2,8 +2,9 @@ const InfectionsByReqTime = (data, CurrentlyInfected, time) => Math.trunc(
   CurrentlyInfected * (2 ** (Math.trunc(time / 3)))
 );
 
-const SeverCaseByReqTime = (data, CurrentlyInfected, time) => Math.trunc((
-  CurrentlyInfected * (2 ** (Math.trunc(time / 3)))) * 0.15);
+const SeverCaseByReqTime = (data, CurrentlyInfected, time) => (
+  CurrentlyInfected * (2 ** (Math.trunc(time / 3))) * 0.15
+);
 
 const covid19ImpactEstimator = (data) => {
   const input = data;
