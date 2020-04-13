@@ -4,12 +4,12 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: input,
     impact: {
-      //challenge One
-      currentlyInfected: input.reportedCases * 10,
+      // challenge One
+      currentlyInfected: input.reportedCases * 10
     },
     severeImpact: {
-      //challenge One
-      currentlyInfected : input.reportedCases * 50
+      // challenge One
+      currentlyInfected: input.reportedCases * 50
     }
   };
 };
