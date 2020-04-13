@@ -1,4 +1,4 @@
-const InfectionsByReportedTime = (data, CurrentlyInfected) => {
+const InfectionsByRequestedTime = (data, CurrentlyInfected) => {
   let timePeriod = '';
   if (data.periodType.toLowerCase() === 'days') {
     timePeriod = Math.trunc((data.timeToElapse * 1));
@@ -24,12 +24,12 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       // challenge One
       currentlyInfected: ImpactCurrentlyInfected,
-      infectionsByReportedTime: InfectionsByReportedTime(input, ImpactCurrentlyInfected)
+      infectionsByRequestedTime: InfectionsByRequestedTime(input, ImpactCurrentlyInfected)
     },
     severeImpact: {
       // challenge One
       currentlyInfected: SevereImpactCurrentlyInfected,
-      infectionsByReportedTime: InfectionsByReportedTime(input, SevereImpactCurrentlyInfected)
+      infectionsByRequestedTime: InfectionsByRequestedTime(input, SevereImpactCurrentlyInfected)
     }
   };
 };
