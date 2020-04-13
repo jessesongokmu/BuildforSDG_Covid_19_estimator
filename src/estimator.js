@@ -9,15 +9,15 @@ const InfectionsByReportedTime = (data, CurrentlyInfected) => {
   if (data.periodType.toLowerCase() === 'months') {
     timePeriod = Math.trunc((data.timeToElapse * 30));
   }
-  return CurrentlyInfected * ((2 ** (timePeriod / 3)));
+  return CurrentlyInfected * (2 ** (timePeriod / 3));
 };
 
 
 const covid19ImpactEstimator = (data) => {
   const input = data;
-  // Challenge One Computation
-  const ImpactCurrentlyInfected = input.reportedCases * 10;
-  const SevereImpactCurrentlyInfected = input.reportedCases * 50;
+  // Challenge One Computation.
+  const ImpactCurrentlyInfected = data.reportedCases * 10;
+  const SevereImpactCurrentlyInfected = data.reportedCases * 50;
 
   return {
     data: input,
