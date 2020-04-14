@@ -10,10 +10,10 @@ const SevereCaseByReqTime = (data, CurrentlyInfected, time) => {
 
 const HospitalBedsRequest = (data, CurrentlyInfected, time) => {
   const severeCases = SevereCaseByReqTime(data, CurrentlyInfected, time);
-  const totalBedCapacity = data.totalHospitalBeds; // Get the Total Beds Available
+  const totalBedCapacity = Math.trunc(data.totalHospitalBeds); // Get the Total Beds Available
   const AvailableCapacity = Math.trunc(totalBedCapacity * 0.35); // Get 35% of total beds Available
   // return unoccupied bed capacity for COVID-19 patients (plus or Minus)
-  return Math.trunc(AvailableCapacity - severeCases);
+  return AvailableCapacity - severeCases;
 };
 
 
@@ -34,6 +34,8 @@ const covid19ImpactEstimator = (data) => {
   if (input.periodType.toLowerCase() === 'months') {
     time = Math.trunc((input.timeToElapse * 30));
   }
+
+
 
   return {
     data: input,
