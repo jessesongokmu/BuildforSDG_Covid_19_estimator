@@ -34,9 +34,6 @@ const covid19ImpactEstimator = (data) => {
   if (input.periodType.toLowerCase() === 'months') {
     time = Math.trunc((input.timeToElapse * 30));
   }
-
-
-
   return {
     data: input,
     impact: {
