@@ -3,13 +3,13 @@ const InfectionsByReqTime = (data, CurrentlyInfected, time) => Math.trunc(
 );
 
 const SevereCaseByReqTime = (data, CurrentlyInfected, time) => {
-  const Infections = InfectionsByReqTime(data, CurrentlyInfected, time);
+  const Infections = Math.trunc(InfectionsByReqTime(data, CurrentlyInfected, time));
   return Math.trunc(Infections * 0.15);
 };
 
 
 const HospitalBedsRequest = (data, CurrentlyInfected, time) => {
-  const severeCases = SevereCaseByReqTime(data, CurrentlyInfected, time);
+  const severeCases = Math.trunc(SevereCaseByReqTime(data, CurrentlyInfected, time));
   const totalBedCapacity = Math.trunc(data.totalHospitalBeds); // Get the Total Beds Available
   const AvailableCapacity = Math.trunc(totalBedCapacity * 0.35); // Get 35% of total beds Available
   // return unoccupied bed capacity for COVID-19 patients (plus or Minus)
